@@ -16,8 +16,11 @@ var shop2prod = 50;
 var shop2mult = 1.10;
 
 document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
-document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
-document.getElementById("Shop2Display").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
+document.getElementById("ShopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+document.getElementById("ShopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
+document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
+document.getElementById("shopCost2").innerHTML = "Cost: " + shop2costkilobytes + " Kilobytes";
+document.getElementById("level").innerHTML = "Level: " + level;
 
 function convertBytesKilobytes()
 	{
