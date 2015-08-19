@@ -3,32 +3,65 @@ var kilobytes = 0;
 var totalCount = 0;
 var level = 1;
 
+var shop1costBytes = 25;
+var shop1costKilobytes = 0;
+var shop1quan = 0;
+var shop1prod = 2;
+var shop1mult = 1.05;
+
 document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
+document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 
 function convertBytesKilobytes()
 	{
+	//Function to convert Bytes into Kilobytes
 	bytes = bytes - 1024
 	kilobytes = kilobytes + 1
 	}
 	
 function convertKilobytesBytes()
 	{
+	//Function to convert Kilobytes into Bytes
 	bytes = bytes + 1024
 	kilobytes = kilobytes - 1
 	}
 
 function sixteenBitEgg()
 	{
+	//Easteregg for reaching 64 Kilobytes
 	console.log("ERROR: 16-Bit-Number-Overflow. Bytes have been reset to 0.");
 	kilobytes = 0
 	bytes = 0
 	}
+	
+function shop1Buy()
+	{
+	//Function for buying Shop-Item 1
+	if (bytes >= shop1costBytes)
+		{
+		bytes = bytes - shop1costBytes
+		shop1quan = shop1quan + 1
+		shop1costBytes = shop1mult * shop1costBytes
+		document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+		}
+	else
+		{
+		if (kilobytes > 0)
+			{
+			convertKilobytesBytes()
+			shop1quan = shop1quan + 1
+			shop1costBytes = shop1mult * shop1costBytes
+			document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+			}
+		}
+	}
 
 function upCount(){
+//Function for pressing the button
  document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
  document.getElementById("level").innerHTML = "Level: " + level;
- bytes += 1;
- totalCount += 1;
+ bytes = bytes + 1 + shop1quan * shop1prod;
+ totalCount = totalCount + 1 + shop1quan *shop1prod;
  //console.log(count);
   if (bytes >= 1024)
 	{
