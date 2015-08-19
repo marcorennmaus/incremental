@@ -1,12 +1,6 @@
 # Incremental
 This is going to be an attempt to make a small incremental game.
 
-Changelog:
+Changelog can be found in the "Releases"-Tab
 
-Version alpha-0.3:
-+ + Added Kilobytes (new Currency)
-
-Version alpha-0.2:
-+ + Added levels
-* * Script moved to external file
-* * Excessive console logging disabled
+This game features only a small shop, levels and two currencies (Bytes & Kilobytes) currently.
