@@ -9,8 +9,15 @@ var shop1quan = 0;
 var shop1prod = 2;
 var shop1mult = 1.05;
 
+var shop2costBytes =  0;
+var shop2costKilobytes = 10;
+var shop2quan = 0;
+var shop2prod = 50;
+var shop2mult = 1.10;
+
 document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
 document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+document.getElementById("Shop2Display").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
 
 function convertBytesKilobytes()
 	{
@@ -42,7 +49,8 @@ function shop1Buy()
 		bytes = bytes - shop1costBytes
 		shop1quan = shop1quan + 1
 		shop1costBytes = shop1mult * shop1costBytes
-		document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+		document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+		document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
 		}
 	else
 		{
@@ -51,8 +59,22 @@ function shop1Buy()
 			convertKilobytesBytes()
 			shop1quan = shop1quan + 1
 			shop1costBytes = shop1mult * shop1costBytes
-			document.getElementById("Shop1Display").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+			document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
+			document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
 			}
+		}
+	}
+	
+function shop2Buy()
+	{
+	//Function for buying Shop-Item 2
+	if (kilobytes >= shop2costKilobytes)
+		{
+		kilobytes = kilobytes - shop2costKilobytes
+		shop2quan = shop2quan + 1
+		shop2costKilobytes = shop2mult * shop2costKilobytes
+			document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
+			document.getElementById("shopCost2").innerHTML = "Cost: " + shop1costBytes + " Kilobytes";
 		}
 	}
 
@@ -60,8 +82,8 @@ function upCount(){
 //Function for pressing the button
  document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
  document.getElementById("level").innerHTML = "Level: " + level;
- bytes = bytes + 1 + shop1quan * shop1prod;
- totalCount = totalCount + 1 + shop1quan *shop1prod;
+ bytes = bytes + 1 + shop1quan * shop1prod + shop2quan * shop2prod;
+ totalCount = totalCount + 1 + shop1quan *shop1prod + shop2quan * shop2prod;
  //console.log(count);
   if (bytes >= 1024)
 	{
@@ -74,7 +96,7 @@ else
 		convertKilobytesBytes()
 		}
 	}
- if (bytes >= 65536)
+ if (kilobytes >= 64)
 	{
 	sixteenBitEgg();
 	}
