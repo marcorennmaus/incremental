@@ -34,6 +34,7 @@ document.getElementById("level").innerHTML = "Level: " + level;
 function convertBytesKilobytes()
 	{
 	//Function to convert Bytes into Kilobytes
+	console.log("Converting Bytes into a Kilobyte...");
 	bytes = bytes - 1024
 	kilobytes = kilobytes + 1
 	}
@@ -41,6 +42,7 @@ function convertBytesKilobytes()
 function convertKilobytesBytes()
 	{
 	//Function to convert Kilobytes into Bytes
+	console.log("Converting a Kilobyte into Bytes...");
 	bytes = bytes + 1024
 	kilobytes = kilobytes - 1
 	}
@@ -63,6 +65,7 @@ function shop1Buy()
 		shop1costBytes = shop1mult * shop1costBytes
 		document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 		document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
+		console.log("Buying of Shop-Item 1 succeeded.");
 		}
 	else
 		{
@@ -73,6 +76,11 @@ function shop1Buy()
 			shop1costBytes = shop1mult * shop1costBytes
 			document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 			document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
+			console.log("Buying of Shop-Item 1 succeeded.");
+			}
+		else
+			{
+			console.log("Buying of Shop-Item 1 failed.");
 			}
 		}
 	}
@@ -85,8 +93,13 @@ function shop2Buy()
 		kilobytes = kilobytes - shop2costKilobytes
 		shop2quan = shop2quan + 1
 		shop2costKilobytes = shop2mult * shop2quan
-			document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
-			document.getElementById("shopCost2").innerHTML = "Cost: " + shop1costBytes + " Kilobytes";
+		document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
+		document.getElementById("shopCost2").innerHTML = "Cost: " + shop1costBytes + " Kilobytes";
+		console.log("Buying of Shop-Item 2 succeeded.");
+		}
+	else
+		{
+		console.log("Buying of Shop-Item 2 failed.");
 		}
 	}
 	
@@ -100,6 +113,7 @@ function shop3Buy()
 		shop3costBytes = shop3mult * shop3costBytes
 		document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
 		document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
+		console.log("Buying of Shop-Item 3 succeeded.");
 		}
 	else
 		{
@@ -110,6 +124,11 @@ function shop3Buy()
 			shop3costBytes = shop3mult * shop1costBytes
 			document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
 			document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
+			console.log("Buying of Shop-Item 3 succeeded.");
+			}
+		else
+			{
+			console.log("Buying of Shop-Item 3 failed.");
 			}
 		}
 	}
