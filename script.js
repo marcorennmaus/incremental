@@ -3,17 +3,26 @@ var kilobytes = 0;
 var totalCount = 0;
 var level = 1;
 
+//on click
 var shop1costBytes = 25;
 var shop1costKilobytes = 0;
 var shop1quan = 0;
 var shop1prod = 2;
 var shop1mult = 1.05;
 
+//on click
 var shop2costBytes =  0;
 var shop2costKilobytes = 10;
 var shop2quan = 0;
 var shop2prod = 50;
 var shop2mult = 1.10;
+
+//automated
+var shop3costBytes =  100;
+var shop3costKilobytes = 0;
+var shop3quan = 0;
+var shop3prod = 1;
+var shop3mult = 1.10;
 
 document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
 document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
@@ -78,6 +87,30 @@ function shop2Buy()
 		shop2costKilobytes = shop2mult * shop2quan
 			document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
 			document.getElementById("shopCost2").innerHTML = "Cost: " + shop1costBytes + " Kilobytes";
+		}
+	}
+	
+function shop3Buy()
+	{
+	//Function for buying Shop-Item 3
+	if (bytes >= shop3costBytes)
+		{
+		bytes = bytes - shop3costBytes
+		shop3quan = shop3quan + 1
+		shop3costBytes = shop3mult * shop3costBytes
+		document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
+		document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
+		}
+	else
+		{
+		if (kilobytes > 0)
+			{
+			convertKilobytesBytes()
+			shop3quan = shop3quan + 1
+			shop3costBytes = shop3mult * shop1costBytes
+			document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
+			document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
+			}
 		}
 	}
 
@@ -176,3 +209,12 @@ else
 		}
 	}
 }
+
+var functionEverySecond=setInterval(function () {Byte()}, 1000);
+
+function Byte()
+	{
+    bytes = bytes + shop3quan * shop3prod
+	totalCount = totalCount + shop3quan * shop3prod
+	document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
+	}
