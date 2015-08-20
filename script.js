@@ -64,7 +64,7 @@ function shop1Buy()
 		{
 		bytes = bytes - shop1costBytes
 		shop1quan = shop1quan + 1
-		shop1costBytes = shop1mult * shop1costBytes
+		shop1costBytes = Math.round(shop1mult * shop1costBytes)
 		document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 		document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
 		console.log("Buying of Shop-Item 1 succeeded.");
@@ -74,8 +74,9 @@ function shop1Buy()
 		if (kilobytes > 0)
 			{
 			convertKilobytesBytes()
+			bytes = bytes - shop1costBytes
 			shop1quan = shop1quan + 1
-			shop1costBytes = shop1mult * shop1costBytes
+			shop1costBytes = Math.round(shop1mult * shop1costBytes)
 			document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 			document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
 			console.log("Buying of Shop-Item 1 succeeded.");
@@ -94,7 +95,7 @@ function shop2Buy()
 		{
 		kilobytes = kilobytes - shop2costKilobytes
 		shop2quan = shop2quan + 1
-		shop2costKilobytes = shop2mult * shop2costKilobytes
+		shop2costKilobytes = Math.round(shop2mult * shop2costKilobytes)
 		document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
 		document.getElementById("shopCost2").innerHTML = "Cost: " + shop2costKilobytes + " Kilobytes";
 		console.log("Buying of Shop-Item 2 succeeded.");
@@ -112,7 +113,7 @@ function shop3Buy()
 		{
 		bytes = bytes - shop3costBytes
 		shop3quan = shop3quan + 1
-		shop3costBytes = shop3mult * shop3costBytes
+		shop3costBytes = Math.round(shop3mult * shop3costBytes) 
 		document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
 		document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
 		console.log("Buying of Shop-Item 3 succeeded.");
@@ -123,7 +124,8 @@ function shop3Buy()
 			{
 			convertKilobytesBytes()
 			shop3quan = shop3quan + 1
-			shop3costBytes = shop3mult * shop3costBytes
+			bytes = bytes - shop3costBytes
+			shop3costBytes = Math.round(shop3mult * shop3costBytes)
 			document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
 			document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
 			console.log("Buying of Shop-Item 3 succeeded.");
