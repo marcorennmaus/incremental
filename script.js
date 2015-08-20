@@ -116,10 +116,10 @@ function shop3Buy()
 
 function upCount(){
 //Function for pressing the button
- document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
- document.getElementById("level").innerHTML = "Level: " + level;
  bytes = bytes + 1 + shop1quan * shop1prod + shop2quan * shop2prod;
  totalCount = totalCount + 1 + shop1quan *shop1prod + shop2quan * shop2prod;
+ document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
+ document.getElementById("level").innerHTML = "Level: " + level;
  //console.log(count);
   if (bytes >= 1024)
 	{
