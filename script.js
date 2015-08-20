@@ -49,10 +49,10 @@ function convertKilobytesBytes()
 	kilobytes = kilobytes - 1
 	}
 
-function sixteenBitEgg()
+function twentyBitEgg()
 	{
-	//Easteregg for reaching 64 Kilobytes
-	console.log("ERROR: 16-Bit-Number-Overflow. Bytes have been reset to 0.");
+	//Easteregg for reaching 1024 Kilobytes
+	console.log("ERROR: 20-Bit-Number-Overflow. Bytes have been reset to 0.");
 	kilobytes = 0
 	bytes = 0
 	}
@@ -94,9 +94,9 @@ function shop2Buy()
 		{
 		kilobytes = kilobytes - shop2costKilobytes
 		shop2quan = shop2quan + 1
-		shop2costKilobytes = shop2mult * shop2quan
+		shop2costKilobytes = shop2mult * shop2costKilobytes
 		document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
-		document.getElementById("shopCost2").innerHTML = "Cost: " + shop1costBytes + " Kilobytes";
+		document.getElementById("shopCost2").innerHTML = "Cost: " + shop2costKilobytes + " Kilobytes";
 		console.log("Buying of Shop-Item 2 succeeded.");
 		}
 	else
@@ -123,7 +123,7 @@ function shop3Buy()
 			{
 			convertKilobytesBytes()
 			shop3quan = shop3quan + 1
-			shop3costBytes = shop3mult * shop1costBytes
+			shop3costBytes = shop3mult * shop3costBytes
 			document.getElementById("shopQuantity3").innerHTML = "You bought the Auto-Downloader already " + shop3quan + " times!";
 			document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
 			console.log("Buying of Shop-Item 3 succeeded.");
@@ -153,9 +153,9 @@ else
 		convertKilobytesBytes()
 		}
 	}
- if (kilobytes >= 64)
+ if (kilobytes >= 1024)
 	{
-	sixteenBitEgg();
+	twentyBitEgg();
 	}
 else
 	{
@@ -238,4 +238,19 @@ function Byte()
     bytes = bytes + shop3quan * shop3prod
 	totalCount = totalCount + shop3quan * shop3prod
 	document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
+	if (bytes >= 1024)
+		{
+		convertBytesKilobytes()
+		}
+	else
+		{
+		if (bytes < 0)
+			{
+			convertKilobytesBytes()
+			}
+		}
+	if (kilobytes >= 1024)
+		{
+		twentyBitEgg();
+		}
 	}
