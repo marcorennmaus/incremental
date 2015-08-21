@@ -138,100 +138,28 @@ function shop3Buy()
 	}
 
 function upCount(){
-//Function for pressing the button
- bytes = bytes + 1 + shop1quan * shop1prod + shop2quan * shop2prod;
- totalCount = totalCount + 1 + shop1quan *shop1prod + shop2quan * shop2prod;
- document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
- document.getElementById("level").innerHTML = "Level: " + level;
- //console.log(count);
-  if (bytes >= 1024)
-	{
-	convertBytesKilobytes()
-	}
-else
-	{
-	if (bytes < 0)
+	//Function for pressing the button
+	bytes = bytes + 1 + shop1quan * shop1prod + shop2quan * shop2prod;
+	totalCount = totalCount + 1 + shop1quan *shop1prod + shop2quan * shop2prod;
+	document.getElementById("Counter").innerHTML = kilobytes + " KB - " + bytes + " Bytes";
+	document.getElementById("level").innerHTML = "Level: " + level;
+	//console.log(count);
+	if (bytes >= 1024)
 		{
-		convertKilobytesBytes()
-		}
-	}
- if (kilobytes >= 1024)
-	{
-	twentyBitEgg();
-	}
-else
-	{
-	if (level === 1 && totalCount >= 25)
-		{
-		level = 2
-		console.log("Congratulations! You leveled up to Level 2!");
+		convertBytesKilobytes()
 		}
 	else
 		{
-		if (level === 2 && totalCount >= 50)
+		if (bytes < 0)
 			{
-			level = 3
-			console.log("Congratulations! You leveled up to Level 3!");
-			}
-		else
-			{
-			if (level === 3 && totalCount >= 100)
-				{
-				level = 4
-				console.log("Congratulations! You leveled up to Level 4!");
-				}
-			else
-				{
-				if (level === 4 && totalCount >= 250)
-					{
-					level = 5
-					console.log("Congratulations! You leveled up to Level 5!");
-					}
-				else
-					{
-					if (level === 5 && totalCount >= 500)
-						{
-						level = 6
-						console.log("Congratulations! You leveled up to Level 6!");
-						}
-					else
-						{
-						if (level === 6 && totalCount >= 800)
-							{
-							level = 7
-							console.log("Congratulations! You leveled up to Level 7!");
-							}
-						else
-							{
-							if (level === 7 && totalCount >= 1200)
-								{
-								level = 8
-								console.log("Congratulations! You leveled up to Level 8!");
-								}
-							else
-								{
-								if (level === 8 && totalCount >= 1850)
-									{
-									level = 9
-									console.log("Congratulations! You leveled up to Level 9!");
-									}
-								else
-									{
-									if (level === 9 && totalCount >= 2500)
-										{
-										level = 10
-										console.log("Congratulations! You leveled up to Level 10!");
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			convertKilobytesBytes()
 			}
 		}
+	if (kilobytes >= 1024)
+		{
+		twentyBitEgg();
+		}
 	}
-}
 
 var functionEverySecond=setInterval(function () {Byte()}, 1000);
 
