@@ -6,13 +6,13 @@ var totalCount = 0;
 var shop1costBytes = 25;
 var shop1quan = 0;
 var shop1prod = 2;
-var shop1mult = 1.05;
+var shop1mult = 1.50;
 
 //on click
 var shop2costBytes =  10240;
 var shop2quan = 0;
 var shop2prod = 50;
-var shop2mult = 1.10;
+var shop2mult = 1.50;
 
 //automated
 var shop3costBytes =  100;
@@ -20,19 +20,33 @@ var shop3quan = 0;
 var shop3prod = 1;
 var shop3mult = 1.10;
 
+//automated
+var shop4costBytes = 500;
+var shop4quan = 0;
+var shop4prod = 8;
+var shop4mult = 1.10;
+
+var shop5costBytes = 1250;
+var shop5quan = 0;
+var shop5prod = 24;
+var shop5mult = 1.10;
+
 document.getElementById("Counter").innerHTML = bytes + " Bytes";
 document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
-document.getElementById("shopQuantity3").innerHTML = "You bought a Auto-Downloader already " + shop3quan + " times!";
+document.getElementById("shopQuantity3").innerHTML = "You bought an Auto-Downloader already " + shop3quan + " times!";
+document.getElementById("shopQuantity4").innerHTML = "You hacked a old pc from a grandma already " + shop4quan + " times!";
+document.getElementById("shopQuantity5").innerHTML = "You bought automated Dial-Up-Internet already " + shop5quan + " times!";
 document.getElementById("shopCost1").innerHTML = "Cost: " + shop1costBytes + " Bytes";
 document.getElementById("shopCost2").innerHTML = "Cost: " + shop2costBytes + " Bytes";
 document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
+document.getElementById("shopCost4").innerHTML = "Cost: " + shop4costBytes + " Bytes";
+document.getElementById("shopCost5").innerHTML = "Cost: " + shop5costBytes + " Bytes";
 
 function twentyBitEgg()
 	{
 	//Easteregg for reaching 1024 Kilobytes
 	console.log("ERROR: 20-Bit-Number-Overflow. Bytes have been reset to 0.");
-	kilobytes = 0
 	bytes = 0
 	}
 	
@@ -94,6 +108,44 @@ function shop3Buy()
 		}
 	}
 	
+function shop4Buy()
+	{
+	//Function for buying Shop-Item 4
+	if (bytes >= shop4costBytes)
+		{
+		bytes = bytes - shop4costBytes
+		shop4quan = shop4quan + 1
+		shop4costBytes = Math.round(shop4mult * shop4costBytes) 
+		document.getElementById("shopQuantity4").innerHTML = "You hacked a old pc from a grandma already " + shop4quan + " times!";
+		document.getElementById("shopCost4").innerHTML = "Cost: " + shop4costBytes + " Bytes";
+		console.log("Buying of Shop-Item 4 succeeded.");
+		document.getElementById("Counter").innerHTML = bytes + " Bytes";
+		}
+	else
+		{
+		console.log("Buying of Shop-Item 4 failed.");
+		}
+	}
+	
+function shop5Buy()
+	{
+	//Function for buying Shop-Item 5
+	if (bytes >= shop5costBytes)
+		{
+		bytes = bytes - shop5costBytes
+		shop5quan = shop5quan + 1
+		shop5costBytes = Math.round(shop5mult * shop5costBytes) 
+		document.getElementById("shopQuantity5").innerHTML = "You bought automated Dial-Up-Internet already " + shop5quan + " times!";
+		document.getElementById("shopCost5").innerHTML = "Cost: " + shop5costBytes + " Bytes";
+		console.log("Buying of Shop-Item 5 succeeded.");
+		document.getElementById("Counter").innerHTML = bytes + " Bytes";
+		}
+	else
+		{
+		console.log("Buying of Shop-Item 5 failed.");
+		}
+	}
+	
 function upCount(){
 	//Function for pressing the button
 	bytes = bytes + 1 + shop1quan * shop1prod + shop2quan * shop2prod;
@@ -110,10 +162,10 @@ var functionEverySecond=setInterval(function () {Byte()}, 1000);
 
 function Byte()
 	{
-    bytes = bytes + shop3quan * shop3prod
-	totalCount = totalCount + shop3quan * shop3prod
+    bytes = bytes + shop3quan * shop3prod + shop4quan * shop4prod + shop5quan * shop5prod;
+	totalCount = totalCount + shop3quan * shop3prod + shop4quan * shop4prod + shop5quan * shop5prod;
 	document.getElementById("Counter").innerHTML = bytes + " Bytes";
-	if (kilobytes >= 1048576)
+	if (bytes >= 1048576)
 		{
 		twentyBitEgg();
 		}
