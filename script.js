@@ -31,6 +31,8 @@ var shop5quan = 0;
 var shop5prod = 24;
 var shop5mult = 1.10;
 
+
+loading();
 document.getElementById("Counter").innerHTML = bytes + " Bytes";
 document.getElementById("shopQuantity1").innerHTML = "You bought the faster bandwidth already " + shop1quan + " times!";
 document.getElementById("shopQuantity2").innerHTML = "You bought the Dial-Up-Internet already " + shop2quan + " times!";
@@ -42,6 +44,7 @@ document.getElementById("shopCost2").innerHTML = "Cost: " + shop2costBytes + " B
 document.getElementById("shopCost3").innerHTML = "Cost: " + shop3costBytes + " Bytes";
 document.getElementById("shopCost4").innerHTML = "Cost: " + shop4costBytes + " Bytes";
 document.getElementById("shopCost5").innerHTML = "Cost: " + shop5costBytes + " Bytes";
+document.getElementById("title").innerHTML = "<h1>incremental Alpha preview-0.6</h1>"
 
 function twentyBitEgg()
 	{
@@ -170,3 +173,55 @@ function Byte()
 		twentyBitEgg();
 		}
 	}
+
+var save = {
+	bytes: bytes,
+	kilobytes: kilobytes,
+	totalCount: totalCount,
+	shop1costBytes: shop1costBytes,
+	shop1quan: shop1quan,
+	shop2costBytes: shop2costBytes,
+	shop2quan: shop2quan,
+}
+
+function saving()
+	{
+	savecount = savecount + 1
+	var save =
+		{
+		bytes: bytes,
+		kilobytes: kilobytes,
+		totalCount: totalCount,
+		shop1costBytes: shop1costBytes,
+		shop1quan: shop1quan,
+		shop2costBytes: shop2costBytes,
+		shop2quan: shop2quan,
+		shop3costBytes: shop3costBytes,
+		shop3quan: shop3quan,
+		shop4costBytes: shop4costBytes,
+		shop4quan: shop4quan,
+		shop5costBytes: shop5costBytes,
+		shop5quan: shop5quan,
+		savecount: savecount
+		}
+	localStorage.setItem("save",JSON.stringify(save));
+	}
+	
+function loading()
+	{
+	var savegame = JSON.parse(localStorage.getItem("save"));
+	if (typeof savegame.bytes !== "undefined") bytes = savegame.bytes;
+	if (typeof savegame.kilobytes !== "undefined") kilobytes = savegame.kilobytes;
+	if (typeof savegame.shop1costBytes !== "undefined") shop1costBytes = savegame.shop1costBytes;
+	if (typeof savegame.shop1quan !== "undefined") shop1quan = savegame.shop1quan;
+	if (typeof savegame.shop2costBytes !== "undefined") shop2costBytes = savegame.shop2costBytes;
+	if (typeof savegame.shop2quan !== "undefined") shop2quan = savegame.shop2quan;
+	if (typeof savegame.shop3costBytes !== "undefined") shop3costBytes = savegame.shop3costBytes;
+	if (typeof savegame.shop3quan !== "undefined") shop3quan = savegame.shop3quan;
+	if (typeof savegame.shop4costBytes !== "undefined") shop4costBytes = savegame.shop4costBytes;
+	if (typeof savegame.shop4quan !== "undefined") shop4quan = savegame.shop4quan;
+	if (typeof savegame.shop5costBytes !== "undefined") shop5costBytes = savegame.shop5costBytes;
+	if (typeof savegame.shop5quan !== "undefined") shop5quan = savegame.shop5quan;
+	if (typeof savegame.savecount !== "undefined") savecount = savegame.savecount;
+	}
+	
